@@ -1,0 +1,9 @@
+{
+  "name": "react-minimum-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nokazn/react-minimum-starter",
+  "author": "nokazn",
+  "license": "MIT",
+  "private": true
+}
