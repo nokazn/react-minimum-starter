@@ -5,5 +5,48 @@
   "repository": "git@github.com:nokazn/react-minimum-starter",
   "author": "nokazn",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "format": "prettier --write src/**/*.{t,j}s{,x}",
+    "lint": "eslint --ignore-path .eslintignore src/**/*.{t,j}s{,x}",
+    "lint:fix": "eslint --ignore-path .eslintignore src/**/*.{t,j}s{,x} --fix",
+    "tsconfig:webpack": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\"",
+    "build:dev": "npm run tsconfig:webpack webpack -d --mode development",
+    "build:prod": "npm run tsconfig:webpack webpack -p --mode production",
+    "dev": "yarn tsconfig:webpack webpack-dev-server --hot --mode development --progress --color"
+  },
+  "devDependencies": {
+    "@hot-loader/react-dom": "^17.0.0-rc.2",
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "@types/webpack": "^4.41.22",
+    "@types/webpack-dev-server": "^3.11.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "html-webpack-plugin": "^4.5.0",
+    "prettier": "^2.1.2",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.3.0",
+    "ts-loader": "^8.0.4",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.13.0"
+  }
 }

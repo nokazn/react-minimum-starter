@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "es6",
-    // "lib": [],
+    "lib": ["dom", "es2020"],
     // "allowJs": true,
     // "checkJs": true,
     "jsx": "react",
@@ -41,7 +41,7 @@
     // "typeRoots": [],
     // "types": [],
     // "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
     // "preserveSymlinks": true,
     // "allowUmdGlobalAccess": true,
 
@@ -52,5 +52,7 @@
 
     // "experimentalDecorators": true,
     // "emitDecoratorMetadata": true,
-  }
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*"]
 }
