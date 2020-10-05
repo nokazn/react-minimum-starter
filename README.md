@@ -2,8 +2,8 @@
 
 ## Todos
 
-[ ] Add test
-[ ] Styled components
+- [ ] Add test
+- [ ] Styled components
 
 ## LICENSE
 
