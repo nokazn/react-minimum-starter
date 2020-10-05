@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { Button } from './components/Button';
 
 type Props = {};
 
 const App: React.FC<Props> = () => {
+  const [count, setCount] = useState(0);
+  const onIncrement = () => setCount(count + 1);
+  const onDecrement = () => setCount(count - 1);
+
   return (
     <>
-      <p>Hello world.</p>
+      <p>count: {count}</p>
+      <Button onClick={onIncrement}>increment</Button>
+      <Button onClick={onDecrement}>decrement</Button>
     </>
   );
 };
