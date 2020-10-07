@@ -47,6 +47,13 @@ const config: Configuration = {
       'react-dom': '@hot-loader/react-dom',
     },
   },
+  devServer: {
+    hot: true,
+    host: 'localhost',
+    port: 8080,
+    historyApiFallback: true,
+    contentBase: './public',
+  },
 };
 
 export default config;
