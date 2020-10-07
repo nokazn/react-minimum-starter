@@ -1,5 +1,6 @@
 import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
 import type { Configuration } from 'webpack';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -33,6 +34,9 @@ const config: Configuration = {
     // html ファイルに script タグを挿入
     new HtmlWebpackPlugin({
       template: './public/index.html',
+    }),
+    new ESLintPlugin({
+      extensions: ['tsx', 'ts', 'jsx', 'js'],
     }),
   ],
   resolve: {
