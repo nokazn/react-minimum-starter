@@ -11,6 +11,8 @@ const mode = isProduction ? 'production' : 'development';
 const config: Configuration = {
   mode,
 
+  target: 'web',
+
   // https://github.com/gaearon/react-hot-loader#getting-started
   entry: ['react-hot-loader/patch', './src/index.tsx'],
 
