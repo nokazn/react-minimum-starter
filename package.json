@@ -11,8 +11,8 @@
     "lint": "eslint --ignore-path .eslintignore src/**/*.{t,j}s{,x}",
     "lint:fix": "eslint --ignore-path .eslintignore src/**/*.{t,j}s{,x} --fix",
     "tsconfig:webpack": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\"",
-    "build:dev": "npm run tsconfig:webpack webpack -d --mode development",
-    "build:prod": "npm run tsconfig:webpack webpack -p --mode production",
+    "build:dev": "yarn tsconfig:webpack webpack -d --mode development",
+    "build:prod": "yarn tsconfig:webpack webpack -p --mode production",
     "dev": "yarn tsconfig:webpack webpack-dev-server --mode development --progress --color"
   },
   "devDependencies": {

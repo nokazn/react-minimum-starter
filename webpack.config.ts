@@ -6,17 +6,21 @@ import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration } from 'webpack';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const mode = isProduction ? 'production' : 'development';
 
 const config: Configuration = {
-  mode: isProduction ? 'production' : 'development',
+  mode,
+
   // https://github.com/gaearon/react-hot-loader#getting-started
   entry: ['react-hot-loader/patch', './src/index.tsx'],
+
   output: {
     // 絶対パス
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/js/',
   },
+
   module: {
     rules: [
       {
@@ -37,6 +41,7 @@ const config: Configuration = {
       },
     ],
   },
+
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
@@ -45,6 +50,7 @@ const config: Configuration = {
       'react-dom': '@hot-loader/react-dom',
     },
   },
+
   plugins: [
     // html ファイルに script タグを挿入
     new HtmlPlugin({
@@ -55,13 +61,16 @@ const config: Configuration = {
     }),
     new ForkTsCheckerPlugin(),
   ],
+
   optimization: {
-    minimize: true,
+    nodeEnv: mode,
+    minimize: isProduction,
     // typescript-eslint が上手く推論できでない?
     // https://github.com/typescript-eslint/typescript-eslint/issues/2109
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
     minimizer: [new TerserPlugin()],
   },
+
   devServer: {
     hot: true,
     host: 'localhost',
