@@ -21,7 +21,6 @@ const config: Configuration = {
     // 絶対パス
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/js/',
   },
 
   module: {
