@@ -4,6 +4,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration } from 'webpack';
+import packageJson from './package.json';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const mode = isProduction ? 'production' : 'development';
@@ -57,6 +58,8 @@ const config: Configuration = {
     // html ファイルに script タグを挿入
     new HtmlPlugin({
       template: './public/index.html',
+      title: packageJson.name,
+      description: packageJson.description,
     }),
     new ESLintPlugin({
       extensions: ['tsx', 'ts', 'jsx', 'js'],
@@ -67,9 +70,6 @@ const config: Configuration = {
   optimization: {
     nodeEnv: mode,
     minimize: isProduction,
-    // typescript-eslint が上手く推論できでない?
-    // https://github.com/typescript-eslint/typescript-eslint/issues/2109
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
     minimizer: [new TerserPlugin()],
   },
 
