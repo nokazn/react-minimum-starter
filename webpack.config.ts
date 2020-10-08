@@ -1,5 +1,6 @@
 import * as path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import type { Configuration } from 'webpack';
 
@@ -13,6 +14,7 @@ const config: Configuration = {
     // 絶対パス
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/js/',
   },
   module: {
     rules: [
@@ -30,15 +32,6 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [
-    // html ファイルに script タグを挿入
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-    new ESLintPlugin({
-      extensions: ['tsx', 'ts', 'jsx', 'js'],
-    }),
-  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
@@ -47,12 +40,53 @@ const config: Configuration = {
       'react-dom': '@hot-loader/react-dom',
     },
   },
+  plugins: [
+    // html ファイルに script タグを挿入
+    new HtmlPlugin({
+      template: './public/index.html',
+    }),
+    new ESLintPlugin({
+      extensions: ['tsx', 'ts', 'jsx', 'js'],
+    }),
+  ],
+  optimization: {
+    minimize: true,
+    // typescript-eslint が上手く推論できでない?
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2109
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
+    minimizer: [new TerserPlugin()],
+  },
   devServer: {
     hot: true,
     host: 'localhost',
     port: 8080,
     historyApiFallback: true,
     contentBase: './public',
+    watchContentBase: true,
+    // quiet, noInfo では少なすぎるので bundle information を細かく設定
+    stats: {
+      assets: false,
+      builtAt: false,
+      // moduleAssets: false,
+      // cachedModules: false,
+      cachedAssets: false,
+      // runtimeModules: false,
+      children: false,
+      chunks: false,
+      chunkOrigins: false,
+      hash: false,
+      modules: false,
+      moduleTrace: false,
+      performance: false,
+      publicPath: false,
+      reasons: false,
+      timings: false,
+      // chunkGroupAuxiliary: false,
+      // chunkGroupChildren: false,
+      chunkModules: false,
+      colors: true,
+      version: false,
+    },
   },
 };
 
