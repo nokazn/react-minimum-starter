@@ -69,6 +69,12 @@ module.exports = {
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 2,
 
+    // typescript-eslint が上手く推論できでない?
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2109
+    '@typescript-eslint/no-unsafe-member-access': 0,
+    '@typescript-eslint/no-unsafe-assignment': 0,
+    '@typescript-eslint/no-unsafe-call': 0,
+
     /**
      * eslint-plugin-react
      */
