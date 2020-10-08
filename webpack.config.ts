@@ -2,6 +2,7 @@ import * as path from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
+import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration } from 'webpack';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -27,6 +28,10 @@ const config: Configuration = {
         test: /\.tsx?$/,
         use: {
           loader: 'ts-loader',
+          options: {
+            // fork-ts-checker-webpack-plugin で型チェックする
+            transpileOnly: true,
+          },
         },
         exclude: /node_modules/,
       },
@@ -48,6 +53,7 @@ const config: Configuration = {
     new ESLintPlugin({
       extensions: ['tsx', 'ts', 'jsx', 'js'],
     }),
+    new ForkTsCheckerPlugin(),
   ],
   optimization: {
     minimize: true,
