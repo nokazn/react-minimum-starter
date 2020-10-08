@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Button } from './components/Button';
+import './App.scss';
 
 type Props = {};
 

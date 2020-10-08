@@ -27,7 +27,7 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         // sass-loader -> css-loader -> style-loader の順に実行
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
