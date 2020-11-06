@@ -14,7 +14,7 @@
     "tsconfig:webpack": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\"",
     "build:dev": "yarn tsconfig:webpack webpack -d --mode development",
     "build:prod": "yarn tsconfig:webpack webpack -p --mode production",
-    "dev": "yarn tsconfig:webpack webpack-dev-server --mode development --progress --color"
+    "dev": "yarn tsconfig:webpack webpack serve --mode development --progress --color"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.0-rc.2",
@@ -49,7 +49,7 @@
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^4.0.0",
+    "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
