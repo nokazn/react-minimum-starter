@@ -1,4 +1,6 @@
-# react-minimum-starter
+# react-webpack-starter
+
+starter for React & Webpack
 
 ## Todos
 
