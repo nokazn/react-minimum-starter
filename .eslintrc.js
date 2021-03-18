@@ -12,6 +12,7 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    "jest/globals": true,
   },
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
@@ -29,8 +30,7 @@ module.exports = {
       jsx: true,
     },
   },
-  // plugins: ['@typescript-eslint', 'jest'],
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', 'jest', 'jest-dom'],
   settings: {
     'import/resolver': {
       node: {
@@ -44,6 +44,7 @@ module.exports = {
     'lines-between-class-members': ALLOW,
     'no-console': WARNING,
     'arrow-body-style': ALLOW,
+    'no-undef': ALLOW,
 
     /**
      * eslint-plugin-import
