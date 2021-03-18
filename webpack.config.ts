@@ -12,6 +12,7 @@ const mode = isProduction ? 'production' : 'development';
 const config: Configuration = {
   mode,
   target: 'web',
+  devtool:'eval',
   // https://github.com/gaearon/react-hot-loader#getting-started
   entry: ['react-hot-loader/patch', './src/index.tsx'],
   output: {
@@ -80,10 +81,10 @@ const config: Configuration = {
     stats: {
       assets: false,
       builtAt: false,
-      // moduleAssets: false,
-      // cachedModules: false,
+      moduleAssets: false,
+      cachedModules: false,
       cachedAssets: false,
-      // runtimeModules: false,
+      runtimeModules: false,
       children: false,
       chunks: false,
       chunkOrigins: false,
@@ -94,8 +95,8 @@ const config: Configuration = {
       publicPath: false,
       reasons: false,
       timings: false,
-      // chunkGroupAuxiliary: false,
-      // chunkGroupChildren: false,
+      chunkGroupAuxiliary: false,
+      chunkGroupChildren: false,
       chunkModules: false,
       colors: true,
       version: false,
