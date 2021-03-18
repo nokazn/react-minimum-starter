@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "es6",
     "lib": ["dom", "es2020"],
-    // "allowJs": true,
+    "allowJs": true,
     // "checkJs": true,
     "jsx": "react",
     // "declaration": true,
@@ -53,6 +53,11 @@
     // "experimentalDecorators": true,
     // "emitDecoratorMetadata": true,
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*",
+    ".eslintrc.js"
+  ]
 }
