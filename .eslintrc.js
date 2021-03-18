@@ -1,3 +1,7 @@
+const ALLOW = 0;
+const WARNING = 1
+const ERROR = 2;
+
 module.exports = {
   env: {
     es6: true,
@@ -15,8 +19,6 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -38,15 +40,16 @@ module.exports = {
   },
   rules: {
     // switch 文での prettier との競合を防ぐ
-    indent: [2, 2, { SwitchCase: 1 }],
-    'lines-between-class-members': 0,
-    'no-console': 1,
+    indent: [ERROR, 2, { SwitchCase: WARNING }],
+    'lines-between-class-members': ALLOW,
+    'no-console': WARNING,
+    'arrow-body-style': ALLOW,
 
     /**
      * eslint-plugin-import
      */
     'import/extensions': [
-      2,
+      ERROR,
       {
         ts: 'never',
         tsx: 'never',
@@ -55,31 +58,31 @@ module.exports = {
         json: 'never',
       },
     ],
-    'import/no-unresolved': [1, { commonjs: true, amd: true }],
-    'import/no-extraneous-dependencies': [1, { devDependencies: true }],
-    'import/prefer-default-export': 0,
+    'import/no-unresolved': [WARNING, { commonjs: true, amd: true }],
+    'import/no-extraneous-dependencies': [WARNING, { devDependencies: true }],
+    'import/prefer-default-export': ALLOW,
 
     /**
      * eslint と @typescript-eslint 競合を防ぐ
      */
     // typescript-eslint の no-use-before-define を有効にする
-    'no-use-before-define': 0,
-    '@typescript-eslint/no-use-before-define': 2,
+    'no-use-before-define': ALLOW,
+    '@typescript-eslint/no-use-before-define': ERROR,
     // typescript-eslint の no-unuserd-vars を有効にする
-    'no-unused-vars': 0,
-    '@typescript-eslint/no-unused-vars': 2,
+    'no-unused-vars': ALLOW,
+    '@typescript-eslint/no-unused-vars': ERROR,
 
     // typescript-eslint が上手く推論できでない?
     // https://github.com/typescript-eslint/typescript-eslint/issues/2109
-    '@typescript-eslint/no-unsafe-member-access': 0,
-    '@typescript-eslint/no-unsafe-assignment': 0,
-    '@typescript-eslint/no-unsafe-call': 0,
+    '@typescript-eslint/no-unsafe-member-access': ALLOW,
+    '@typescript-eslint/no-unsafe-assignment': ALLOW,
+    '@typescript-eslint/no-unsafe-call': ALLOW,
 
     /**
      * eslint-plugin-react
      */
     // tsx も有効にする
-    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
-    'react/prop-types': 0,
+    'react/jsx-filename-extension': [ERROR, { extensions: ['.jsx', '.tsx'] }],
+    'react/prop-types': ALLOW,
   },
 };
